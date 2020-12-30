@@ -1,0 +1,21 @@
+server:
+  applicationConnectors:
+  - type: http
+    port: 9000
+  adminConnectors:
+  - type: http
+    port: 9001
+database:
+  driverClass: org.h2.Driver
+  user: sa
+  password: sa
+  url: jdbc:h2:mem:acme-customers;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+  properties:
+    charSet: UTF-8
+    hibernate.hbm2ddl.auto: create
+
+#  # the SQL query to run when validating a connection's liveness
+  validationQuery: "/* MyApplication Health Check */ SELECT 1"
+customersUrl: http://localhost:8080/acme-customers-api-1.0.0-SNAPSHOT/v1
+catalogueUrl: http://localhost:9080/acme-monolith-soap/ECommerceWs?wsdl
+authPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw1B8hHLlKBMcHSDuEsOFkzoa2vBlmgOkhebYWlgkU+5G3ENIIk1ijVrT3m/sJUKpurGwedQd0oJ2mCOIRVsqJ9Sf8uKJ5WSnxMq5dFEy7mY2gzDjppxvdXQqNvhoi8jPqzSa3gkd0brK0zlSzP5AYxKOsvibobQXqzn/0+yqLOXq6n+PwqGocWYlyMq3GgueJ7u/CuT/JDyyggnCtDCxaz3BKtrDbdQBQywxdSZl9DFQh78rg6YFWvs7mlf1fQFLY64Z+LL+7fYttxLxyw2wIV4jYNW5nuDhrc4LgLCWR3y+HC3YHhCArPZzhLUxDj+yiu1vRD5UhWp8HUDRwlXN8wIDAQAB

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Microservice Example</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
+  </head>
+  <body>
+  <section class="section" id="app">
+    <div class="container">
+      <h1 class="title">
+        Customers List
+      </h1>
+      <p class="subtitle">
+        Here you can find all the customers in the system.
+      </p>
+
+      <table class="table is-fullwidth">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Date of birth</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="c in customers">
+            <th>{{ c.id }}</th>
+            <td>{{ c.firstname }}</td>
+            <td>{{ c.lastname }}</td>
+            <td>{{ c.email }}</td>
+            <td>{{ c.dateOfBirth }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="has-text-centered" v-if="customers.length == 0"><em>No customers found!</em></div>
+    </div>
+    <div class="container">
+        <h1 class="title">
+          Orders List
+        </h1>
+        <p class="subtitle">
+          Here you can find all the orders in the system.
+        </p>
+  
+        <table class="table is-fullwidth">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Status</th>
+              <th>Total Price</th>
+              <th>Number of Items</th>
+              <th>Transaction Id</th>
+              <th>Credit card type</th>
+              <th>Credit card last 4 digits</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="o in orders">
+              <th>{{ o.id }}</th>
+              <td>{{ o.status }}</td>
+              <td>{{ o.totalPrice }}</td>
+              <td>{{ o.numberOfItems }}</td>
+              <td>{{ o.transactionId }}</td>
+              <td>{{ o.cardType || "Unavailable" }}</td>
+              <td>{{ o.cardLast4 || "Unavailable" }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="has-text-centered" v-if="orders.length == 0"><em>No orders found!</em></div>
+      </div>
+      <div class="container">
+        <h1 class="title">
+          Transactions List
+        </h1>
+        <p class="subtitle">
+          Here you can find all the transactions in the system.
+        </p>
+  
+        <table class="table is-fullwidth">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Currency</th>
+              <th>Amount</th>
+              <th>Card type</th>
+              <th>Card last 4 digits</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="t in transactions">
+              <th>{{ t.id }}</th>
+              <td>{{ t.currency }}</td>
+              <td>{{ t.amount }}</td>
+              <td>{{ t.cardDetails.type }}</td>
+              <td>{{ t.cardDetails.last4 }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="has-text-centered" v-if="transactions.length == 0"><em>No transactions found!</em></div>
+      </div>
+  </section>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="main.js"></script>
+  </body>
+</html>
